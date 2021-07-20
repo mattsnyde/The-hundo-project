@@ -66,3 +66,8 @@ code[class*="language-"], /*Set up code tag css */
         word-break: break-all;
         word-wrap: break-word;
     }
+
+.logoFont{
+    font-family: 'Sonsie One', cursive;
+    
+}
