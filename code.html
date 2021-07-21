@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>Hundo: A Coding Project By Matthew Snyder</title>
+    <title>Zero to 100: A Coding Project By Matthew Snyder</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,7 +23,7 @@
 <!--Nav Area -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top"> <!--Expand all of the links for medium screens and above, and hamburger icon for screens less than medium breakpont. dark background, fixed to to top-->
                 <div class="container-fluid">
-                    <a class="navbar-brand logoFont" href="#"><img src="img/E.svg" alt="Matthew Snyder Mark" class="d-inline-block align-text-top" width="30" height="24">Hundo</a>
+                    <a class="navbar-brand logoFont" href="#"><img src="img/E.svg" alt="Matthew Snyder Mark" class="d-inline-block align-text-top" width="30" height="24">Zero to 100</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -52,23 +52,70 @@
     <!--main area-->
     <main class="flex-shrink-0">
         <div class="container py-5 px-4 mt-5">
-            <h2 class="border-1 border-bottom border-dark text-center">The Code for Hundo</h2>
+            <h2 class="border-1 border-bottom border-dark text-center">The Code for Zero to 100</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <!--first column is code embed-->
                 <div class="col-lg-8">
                     <pre class="line-numbers"> <!--line-numbers will put an increasing number for each line there is.-->
                         <code class="language-javascript">
-                            function helloWorld(){  
-                                alert("hello world")
+                             function getValues(){
+                                let startValue = document.getElementById('startValue').value
+                                let endValue = document.getElementById('endValue').value
+
+                                //Attempt to parse into Integers
+                                startValue = parseInt(startValue)
+                                endValue = parseInt(endValue)
+
+
+                                 if(Number.isInteger(startValue) && Number.isInteger(endValue)){ 
+                                    //Call generateNumbers function
+                                    let numbers = generateNumbers(startValue, endValue)
+
+                                    //Call displayNumber function
+                                    displayNumbers(numbers)
+                                }else{
+                                    alert("Integers only")
+                                }
+                            }
+
+                             function generateNumbers(startVal, endVal){
+                                let numbers = [];
+                                for(let i = startVal; i <= endVal; i++){
+                                    numbers.push(i)
+                                }
+                                return numbers;
+                            }
+
+                             function displayNumbers(arrayOfNums){
+                                const tableEl = document.getElementById('results')
+                                tableEl.innerHTML = '';
+                                for(let i = 0; i < arrayOfNums.length; i++){
+                                    if(arrayOfNums[i] % 2 === 0){
+                                        tableEl.innerHTML+=
+                                        `<tr><td><strong>${arrayOfNums[i]}</strong></td></tr>`
+                                    }else{
+                                        tableEl.innerHTML += 
+                                        `<tr><td>${arrayOfNums[i]}</td></tr>`
+                                    }
+                                }
                             }
                         </code>
                     </pre>
                 </div>
                 <!--second column is description of the code-->
-                <div class="col-lg-4">
-                    <p>The code is structured in one function</p>
-                    <h5>Hello World</h5>
-                    <p>helloWorld is a function that displays an alert with a message of "Hello World"</p>
+                <div class="col-lg-4 pt-2">
+                    <h5>getValues()</h5>
+                    <p>The getValues() function is responsible for retrieving the numbers the user provides in our input fields and parsing them as integers. If both inputs provided by the user are both numbers than we will call the generateNumbers() and displayNumbers() functions described below.</p>
+                    <br>
+                    <h5>generateNumbers()</h5>
+                    <p>The generateNumbers() function takes two parameters which are the starting value and the end value. The function uses a for loop to iterate through the numbers between the values the user provided and pushes those numbers to an array. The array is then returned.</p>
+                    <br>
+                    <h5>displayNumbers()</h5>
+                    <p>The displayNumbers function takes one parameter which is an array of integers. The function retrieves the table we made in HTML using the id and then sets the innerHTML to be empty so if the user spams the button it does not constantly add to the old table. Then using a for loop to iterate through the array of numbers (these are all the numbers between the 2 values the user provided) I seperate the numbers into two categories using if statements. If the number is divisible by two then I want the number to appear bolded otherwise the number wilk appear normally</p>
+                    <br>
+                    <br>
+                    <h5>Conclusion</h5>
+                    <p>The javascript code written for this app takes the user input and finds all numbers between those two. I then determine if when the numbers between what the user entered are divisible by 2 and if they are I apply a strong tag, otherwise no style is applied. The array of numbers is then added to table.</p>
                 </div>
             </div>
         </div>
@@ -93,15 +140,7 @@
                 </div>
              </div>
         </footer>
-        <script src="js/prism.js"></script>
-        <script> //Makes the prism look nicer.
-            Prism.plugins.NormalizeWhitespace.setDefaults({
-                'remvoe-trailing':true,
-                'remove-indent':true,
-                'left-trim':true,
-                'right-trim':true,
-            })
-        </script>
+     
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
         </script>
@@ -109,5 +148,14 @@
             integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
         </script>
         <script src="js/site.js"></script>
+        <script src="js/prism.js"></script>
+        <script> //Makes the prism look nicer.
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing':true,
+                'remove-indent':true,
+                'left-trim':true,
+                'right-trim':true
+            })
+        </script>
 </body>
 </html>

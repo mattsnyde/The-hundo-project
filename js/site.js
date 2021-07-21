@@ -1,35 +1,47 @@
-const startValue = document.getElementById('startValue')
-const endValue = document.getElementById('endValue')
-const button = document.getElementById('btn-submit')
-const tableEl = document.getElementById('results')
+//Get values from page -- Acts as controller function
+function getValues(){
+    let startValue = document.getElementById('startValue').value
+    let endValue = document.getElementById('endValue').value
 
-function execute(){
-    button.addEventListener('click', function(){
-        tableEl.innerHTML = ''; //Reset the table everytime user clicks button
-        let arrayOfNums = findNums(startValue, endValue) //assign numbers to an array from the function that finds the numbers between the beginning and end values
-         for(let i = 0; i < arrayOfNums.length; i++){ //Loop through all the numbers we have inside of the array, if the numbers are divisible 2 then we make them bold otherwise they are just normal numbers.
-            if(arrayOfNums[i] % 2 === 0){
-                tableEl.innerHTML += 
-                `<tr><td><strong>${arrayOfNums[i]}</strong></tr></td>`
-            }else{
-                tableEl.innerHTML += 
-                `<tr><td>${arrayOfNums[i]}</tr></td>`
-             }
-         }
-    })    
-}
-execute();
+    //Attempt to parse into Integers
+    startValue = parseInt(startValue)
+    endValue = parseInt(endValue)
 
 
-//The function findNums, has 2 arguements, the beginningValue and endValue, the function function finds all numbers between those two numbers and pushes to an array and then returns the array.
-function findNums(beginningValue, endingValue){
-    let startValue = parseInt(beginningValue.value)
-    let endValue = parseInt(endingValue.value)
-    let nums=  [];
-    for(let i = startValue; i <= endValue; i++){
-        nums.push(i);
+    //Need to be sure startValue and endValue are both integers, if anything else is entered then we will throw an error. This is a little unnecessary however since our input fields are both types of number which does not permit letters or non-numerical characters to be entered into the input field.
+    if(Number.isInteger(startValue) && Number.isInteger(endValue)){ 
+        //Call generateNumbers function
+        let numbers = generateNumbers(startValue, endValue)
+
+        //Call displayNumber function
+        displayNumbers(numbers)
+    }else{
+        alert("Integers only")
     }
-    return nums
+}
+
+//generate numbers from startValue to endValue -- logic function
+function generateNumbers(startVal, endVal){
+    let numbers = [];
+    for(let i = startVal; i <= endVal; i++){
+        numbers.push(i)
+    }
+    return numbers;
+}
+
+//Viewer or displayer function
+function displayNumbers(arrayOfNums){
+    const tableEl = document.getElementById('results')
+    tableEl.innerHTML = '';
+    for(let i = 0; i < arrayOfNums.length; i++){
+        if(arrayOfNums[i] % 2 === 0){
+            tableEl.innerHTML+=
+            `<tr><td><strong>${arrayOfNums[i]}</strong></td></tr>`
+        }else{
+            tableEl.innerHTML += 
+            `<tr><td>${arrayOfNums[i]}</td></tr>`
+        }
+    }
 }
 
 
