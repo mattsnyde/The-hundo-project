@@ -23,7 +23,7 @@
 <!--Nav Area -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top"> <!--Expand all of the links for medium screens and above, and hamburger icon for screens less than medium breakpont. dark background, fixed to to top-->
                 <div class="container-fluid">
-                    <a class="navbar-brand logoFont" href="#"><img src="img/E.svg" alt="Matthew Snyder Mark" class="d-inline-block align-text-top" width="30" height="24">Zero to 100</a>
+                    <a class="navbar-brand logoFont" href="#"><img src="img/Dark logo.svg" alt="Matthew Snyder Mark" class="d-inline-block align-text-top" width="40" height="25">Zero to 100</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -104,17 +104,17 @@
                 </div>
                 <!--second column is description of the code-->
                 <div class="col-lg-4 pt-2">
-                    <h5>getValues()</h5>
+                    <h5 class="pb-2 border-bottom border-2">getValues()</h5>
                     <p>The getValues() function is responsible for retrieving the numbers the user provides in our input fields and parsing them as integers. If both inputs provided by the user are both numbers than we will call the generateNumbers() and displayNumbers() functions described below.</p>
                     <br>
-                    <h5>generateNumbers()</h5>
+                    <h5 class="pb-2 border-bottom border-2">generateNumbers()</h5>
                     <p>The generateNumbers() function takes two parameters which are the starting value and the end value. The function uses a for loop to iterate through the numbers between the values the user provided and pushes those numbers to an array. The array is then returned.</p>
                     <br>
-                    <h5>displayNumbers()</h5>
+                    <h5 class="pb-2 border-bottom border-2">displayNumbers()</h5>
                     <p>The displayNumbers function takes one parameter which is an array of integers. The function retrieves the table we made in HTML using the id and then sets the innerHTML to be empty so if the user spams the button it does not constantly add to the old table. Then using a for loop to iterate through the array of numbers (these are all the numbers between the 2 values the user provided) I seperate the numbers into two categories using if statements. If the number is divisible by two then I want the number to appear bolded otherwise the number wilk appear normally</p>
                     <br>
                     <br>
-                    <h5>Conclusion</h5>
+                    <h5 class="pb-2 border-bottom border-2">Conclusion</h5>
                     <p>The javascript code written for this app takes the user input and finds all numbers between those two. I then determine if when the numbers between what the user entered are divisible by 2 and if they are I apply a strong tag, otherwise no style is applied. The array of numbers is then added to table.</p>
                 </div>
             </div>
